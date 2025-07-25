@@ -104,6 +104,7 @@ nav ul li a:hover, nav ul li a.active {
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
+    padding: 5px;
 }
 
 
@@ -536,8 +537,7 @@ footer {
 
 @media (max-width: 768px) {
     header .container {
-        flex-wrap: wrap;
-        justify-content: space-between;
+        position: relative;
     }
     
     .logo {
@@ -547,23 +547,38 @@ footer {
     .mobile-menu-btn {
         display: block;
         order: 2;
+        margin-left: auto;
     }
     
-    nav {
+    #mainNav {
         order: 4;
         width: 100%;
         margin-top: 15px;
         display: none;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        padding: 10px 0;
     }
     
-    nav.active {
+    #mainNav.active {
         display: block;
     }
     
-    nav ul {
+    #mainNav ul {
         flex-direction: column;
         align-items: center;
         gap: 10px;
+    }
+    
+    #mainNav ul li {
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    #mainNav ul li a {
+        display: block;
+        padding: 10px;
     }
     
     .header-actions {

@@ -34,7 +34,7 @@ let products = [
     }
 ];
 
-let currentProductId = 5; 
+let currentProductId = 5;
 
 
 const productsContainer = document.getElementById('productsContainer');
@@ -50,8 +50,8 @@ const productPriceInput = document.getElementById('productPrice');
 const productImageInput = document.getElementById('productImage');
 const productCategoryInput = document.getElementById('productCategory');
 const productDescriptionInput = document.getElementById('productDescription');
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const nav = document.querySelector('nav');
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mainNav = document.getElementById('mainNav');
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -65,24 +65,24 @@ document.addEventListener('DOMContentLoaded', function() {
     
     productForm.addEventListener('submit', handleFormSubmit);
     
-    
+   
     window.addEventListener('click', function(event) {
         if (event.target === productModal) {
             closeModal();
         }
     });
     
- 
+
     window.addEventListener('resize', function() {
         if (window.innerWidth > 768) {
-            nav.classList.remove('active');
+            mainNav.classList.remove('active');
         }
     });
 });
 
 
 function toggleMobileMenu() {
-    nav.classList.toggle('active');
+    mainNav.classList.toggle('active');
 }
 
 
@@ -113,7 +113,7 @@ function renderProducts() {
         productsContainer.appendChild(productCard);
     });
     
-  
+    
     document.querySelectorAll('.btn-edit').forEach(button => {
         button.addEventListener('click', function() {
             const productId = parseInt(this.getAttribute('data-id'));
@@ -128,6 +128,7 @@ function renderProducts() {
         });
     });
 }
+
 
 function openAddProductModal() {
     resetForm();
@@ -144,7 +145,7 @@ function openEditProductModal(productId) {
     resetForm();
     modalTitle.textContent = 'Edit Product';
     
-   
+    
     productIdInput.value = product.id;
     productNameInput.value = product.name;
     productPriceInput.value = product.price;
@@ -160,7 +161,7 @@ function openEditProductModal(productId) {
 function closeModal() {
     productModal.style.display = 'none';
     resetForm();
-    document.body.style.overflow = 'auto'; 
+    document.body.style.overflow = 'auto';
 }
 
 
@@ -196,13 +197,13 @@ function handleFormSubmit(event) {
     };
     
     if (productIdInput.value) {
-   
+  
         const index = products.findIndex(p => p.id === id);
         if (index !== -1) {
             products[index] = product;
         }
     } else {
-        
+     
         products.push(product);
     }
     
